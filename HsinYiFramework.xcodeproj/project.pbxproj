@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF7BB54E1F6266740034FA23 /* HTML5 in Resources */ = {isa = PBXBuildFile; fileRef = EF7BB54D1F6266740034FA23 /* HTML5 */; };
 		EFEF3F9A1F62437B00C252AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEF3F991F62437B00C252AE /* AppDelegate.swift */; };
 		EFEF3F9C1F62437B00C252AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFEF3F9B1F62437B00C252AE /* ViewController.swift */; };
 		EFEF3F9F1F62437B00C252AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFEF3F9D1F62437B00C252AE /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EF7BB54D1F6266740034FA23 /* HTML5 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HTML5; sourceTree = "<group>"; };
 		EFEF3F961F62437B00C252AE /* HsinYiFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HsinYiFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFEF3F991F62437B00C252AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFEF3F9B1F62437B00C252AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 		EFEF3F981F62437B00C252AE /* HsinYiFramework */ = {
 			isa = PBXGroup;
 			children = (
+				EF7BB54D1F6266740034FA23 /* HTML5 */,
 				EFEF3F991F62437B00C252AE /* AppDelegate.swift */,
 				EFEF3F9B1F62437B00C252AE /* ViewController.swift */,
 				EFEF3F9D1F62437B00C252AE /* Main.storyboard */,
@@ -127,6 +130,7 @@
 				EFEF3FA41F62437B00C252AE /* LaunchScreen.storyboard in Resources */,
 				EFEF3FA11F62437B00C252AE /* Assets.xcassets in Resources */,
 				EFEF3F9F1F62437B00C252AE /* Main.storyboard in Resources */,
+				EF7BB54E1F6266740034FA23 /* HTML5 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +306,7 @@
 				EFEF3FAA1F62437B00C252AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
