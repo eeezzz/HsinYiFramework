@@ -37,7 +37,7 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, WKSc
 
         // 不占用頂端的 stausBar
         let frame = CGRect(x:0, y:20, width:UIScreen.main.bounds.width, height:UIScreen.main.bounds.height)
-        wk = WKWebView(frame: frame)
+        wk = WKWebView(frame: frame, configuration: conf)
         // 禁用最頂端下拉拖動的效果
         wk.scrollView.bounces = false
     
@@ -45,6 +45,8 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, WKSc
         
         // 加載頁面
         wk.load(request)
+        
+        // bind protocol
         wk.navigationDelegate = self
         wk.uiDelegate = self
 
@@ -53,8 +55,30 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, WKSc
     }
     
     // 回應 JS 的調用
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+    func userContentController(_ userContentController:WKUserContentController,
+                               didReceive message: WKScriptMessage) {
         print(message.body)
+        let sentData = message.body as! Dictionary<String,String>
+        //判断是确认添加购物车操作
+        if(sentData["method"] == "addToCarCheck"){
+            //获取商品名称
+            let itemName = sentData["name"]!
+            let alertController = UIAlertController(title: "系统提示",
+                                                    message: "确定把\(itemName)添加到购物车吗？",
+                preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            let okAction = UIAlertAction(title: "确定", style: .default, handler: {
+                action in
+                print("点击了确定")
+                
+                //调用页面里加入购物车js方法
+                self.wk!.evaluateJavaScript("addToCar('\(itemName)')",
+                    completionHandler: nil)
+            })
+            alertController.addAction(cancelAction)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
 
     }
     
@@ -66,10 +90,9 @@ class ViewController: UIViewController, WKNavigationDelegate, WKUIDelegate, WKSc
     
     func webView(_ webView: WKWebView, didFinish: WKNavigation!) {
         print(self.wk.title!)
-        self.wk.evaluateJavaScript("showAlert('奏是一个弹框')") { (item, error) in
-            // 闭包中处理是否通过了或者执行JS错误的代码
+
         self.wk.evaluateJavaScript("alert('yes')", completionHandler: nil)
-        }
+       
     }
     
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {

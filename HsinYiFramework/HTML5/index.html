@@ -4,20 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <style type='text/css'>body{font-size:60px}</style>
+    <style type='text/css'>body{font-size:20px}</style>
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
 <body>
     <a href="javascript:alert('Just Alert')">Alert</a>
     <br><br><br><br>
     <a href="javascript:myconfirm()">Logout</a>
-
+    <hr>
+    
+    <span id="cartNums">0</span>
+    <p class="goodsItem" onclick="addToCarCheck()">商品1<p>
+    
     <script type='text/javascript'>
         function myconfirm(){
             if(confirm('Star it?')){
                 alert('Done')
             }
         }
+    
+        function addToCarCheck() {
+            //alert("check")
+            var itemName = "我是商品"
+            var message = {"method":"addToCarCheck","name":itemName};
+            // 送到IOS處理
+            window.webkit.messageHandlers.interOp.postMessage(message)
+        }
+    
+    function addToCar(itemName){
+        var num = parseInt($("#cartNums").text())
+        $("#cartNums").text(num+1)
+    }
+    
+
     </script>
 </body>
 </html>
